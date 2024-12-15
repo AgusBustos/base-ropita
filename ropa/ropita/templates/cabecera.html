@@ -3,18 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Control</title>
-    <body>
-        <!-- Incluir la cabecera -->
-        {% include 'cabecera.html' %}
-        
-        <!-- Contenido principal -->
-        <main>
-            {% block content %}
-            <!-- Aquí se inyecta el contenido específico -->
-            {% endblock %}
-        </main>
-    </body>
+    <title>Cabecera Común</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,5 +33,17 @@
         }
     </style>
 </head>
+<body>
 
+    <!-- Cabecera compartida -->
+    <div class="navbar">
+        <a href="/stock" class="active">Stock</a>
+        <a href="abm_s">CRUD (Stock)</a>
+        <a href="/ventas">Ventas</a>
+        <a href="abm_v">CRUD (Ventas)</a>
+        <a href="/tutoriales">Tutoriales</a>
+        <a href="/admin">Admin</a>
+    </div>
+
+</body>
 </html>
