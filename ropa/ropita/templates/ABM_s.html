@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Stock</title>
+</head>
+<body>
+    <!-- Incluir la cabecera -->
+    {% include 'cabecera.html' %}
+    
+    <!-- Contenido principal -->
+    <main>
+        {% block content %}
+        <!-- Aquí se inyecta el contenido específico -->
+        {% endblock %}
+    </main>
+</body>
+<body>
+    <h1>Crear Stock</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Renderiza automáticamente el formulario -->
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

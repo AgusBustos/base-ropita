@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Stock</title>
+</head>
+<body>
+    <!-- Incluir la cabecera -->
+    {% include 'cabecera.html' %}
+    
+    <!-- Contenido principal -->
+    <main>
+        {% block content %}
+        <!-- Aquí se inyecta el contenido específico -->
+        {% endblock %}
+    </main>
+</body>
+<body>
+    <h1>Editar Producto - {{ stock.titulo }}</h1>
+
+    <!-- Mostrar errores del formulario si los hay -->
+    {% if form.errors %}
+        <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Formulario de edición -->
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Actualizar Producto</button>
+    </form>
+
+    <br>
+    <a href="{% url 'lista_stock' %}">Volver a la lista de stock</a>
+</body>
+</html>

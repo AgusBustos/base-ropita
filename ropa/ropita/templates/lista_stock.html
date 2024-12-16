@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Stock</title>
+</head>
+<body>
+    <!-- Incluir la cabecera -->
+    {% include 'cabecera.html' %}
+    
+    <!-- Contenido principal -->
+    <main>
+        {% block content %}
+        <!-- Aquí se inyecta el contenido específico -->
+        {% endblock %}
+    </main>
+</body>
+<body>
+    <h1>Lista de Stock</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Tipo</th>
+                <th>Prenda</th>
+                <th>Talle</th>
+                <th>Color</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Acciones</th>  <!-- Columna de botones -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in stocks %}
+            <tr>
+                <td>{{ item.titulo }}</td>
+                <td>{{ item.tipo }}</td>
+                <td>{{ item.prenda }}</td>
+                <td>{{ item.talle }}</td>
+                <td>{{ item.color }}</td>
+                <td>{{ item.precio }}</td>
+                <td>{{ item.stock }}</td>
+                <td>
+                    <a href="{% url 'editar_stock' item.id %}"><button>Editar</button></a>
+                    <a href="{% url 'eliminar_stock' item.id %}" onclick="return confirm('¿Estás seguro de eliminar este producto?');"><button>Eliminar</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
